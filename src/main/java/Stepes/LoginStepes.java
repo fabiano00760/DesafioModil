@@ -1,45 +1,36 @@
 package Stepes;
 
-import Driver.AppDriver;
-import Pages.LoginPage;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+import Main.AppDriver;
+import Main.BasePage;
 import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
-import org.junit.Assert;
-
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.util.Locale;
+import org.openqa.selenium.WebDriver;
 
 public class LoginStepes {
 
-    private final LoginPage loginPage;
-    private final AppiumDriver<MobileElement> driver;
+     BasePage basePage;
+     WebDriver driver;
 
     public LoginStepes() {
-
+        basePage = new BasePage();
         driver = AppDriver.getDriver();
-     loginPage = new LoginPage(driver);
     }
 
     @Dado("que estou na página de login")
-    public void que_estou_na_página_de_login() {
+    public void que_estou_na_pagina_de_login() {
         AppDriver.getDriver();
-
     }
-    @Quando("eu inserir credenciais válidas E tocar no botão de login")
-    public void eu_inserir_credenciais_válidas_e_tocar_no_botão_de_login() {
-        loginPage.id_do_usuario("fabiano");
-        loginPage.senha("1234");
-        loginPage.logar();
-
+    @Quando("eu inserir credenciais validas E tocar no botao de login")
+    public void eu_inserir_credenciais_validas_e_tocar_no_botao_de_login() {
+        basePage.id_do_usuario("fabiano");
+        basePage.senha("123");
+        basePage.logar();
     }
-    @Então("eu devo estar na página inicial")
-    public void eu_devo_estar_na_página_inicial() {
-       // Assert.assertEquals(driver.findElementsById());
-
+    @Entao("eu devo estar na pagina inicial")
+    public void eu_devo_estar_na_pagina_inicial() {
+        basePage.TextListaDeProdutos();
+//        driver.close();
     }
 
 }
