@@ -5,8 +5,11 @@ import Main.BasePage;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.WebDriver;
+import com.github.javafaker.Faker;
+
 
 public class LogarComCredenciaisErradas {
+    Faker faker = new Faker();
     BasePage basePage;
     WebDriver driver;
 

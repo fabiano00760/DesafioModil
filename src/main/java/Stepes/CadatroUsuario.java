@@ -6,11 +6,19 @@ import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.WebDriver;
+import com.github.javafaker.Faker;
+
 
 
 public class CadatroUsuario {
+    Faker faker = new Faker();
     BasePage basePage;
     WebDriver driver;
+
+
+    String senha = faker.internet().password(1, 20, true);
+    String nome = faker.name().firstName();
+
 
     public CadatroUsuario() {
         basePage = new BasePage();
@@ -23,9 +31,9 @@ public class CadatroUsuario {
     }
     @E("preenchos os campos nome e senha e confirmo a senha")
     public void preenchos_os_campos_nome_e_senha_e_confirmo_a_senha() {
-        basePage.campoNomeCadastro("fabiano");
-        basePage.campoSenhaCadastro("123");
-        basePage.campoConfirmarSenhaCadastro("123");
+        basePage.campoNomeCadastro(nome);
+        basePage.campoSenhaCadastro(senha);
+        basePage.campoConfirmarSenhaCadastro(senha);
 
 
     }
@@ -36,6 +44,6 @@ public class CadatroUsuario {
     @Entao("usuario cadastrado com sucesso")
     public void usuario_cadastrado_com_sucesso() {
         basePage.cadastroComSucesso();
-//        driver.close();
+          AppDriver.killDriver();
     }
 }

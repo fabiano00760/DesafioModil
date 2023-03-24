@@ -2,12 +2,14 @@ package Stepes;
 
 import Main.AppDriver;
 import Main.BasePage;
-import io.cucumber.java.pt.E;
+import com.github.javafaker.Faker;
 import io.cucumber.java.pt.Entao;
-import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.WebDriver;
+import com.github.javafaker.Faker;
+
 
 public class UsuarioJaCadastrado {
+    Faker faker = new Faker();
     BasePage basePage;
     WebDriver driver;
 
