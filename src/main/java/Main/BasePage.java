@@ -2,6 +2,7 @@ package Main;
 
 import static  Main.AppDriver.getDriver;
 
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,13 +12,11 @@ import org.openqa.selenium.io.FileHandler;
 import java.io.File;
 
 public class BasePage {
-
-
+    private AndroidDriver driver;
     public BasePage() {
         this.driver = getDriver();
     }
 
-    WebDriver driver;
 
     public void id_do_usuario(String name) {
         driver.findElement(By.id("br.com.alura.aluraesporte:id/input_usuario")).sendKeys(name);
@@ -70,7 +69,16 @@ public class BasePage {
 
     }
 
+    public void BtnLogar(){
+        driver.findElement(By.id("br.com.alura.aluraesporte:id/login_botao_logar")).click();
+    }
 
+    public void CampoUsuario(){
+        driver.findElement(By.id("br.com.alura.aluraesporte:id/input_usuario")).sendKeys("Fabiano");
+    }
+    public void CampoSenha(){
+        driver.findElement(By.id("br.com.alura.aluraesporte:id/input_senha")).sendKeys("12345678");
+    }
 
 
     public static void tirarFoto(WebDriver navegador, String passo) {

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import com.github.javafaker.Faker;
 
 
-public class UsuarioJaCadastrado {
+public class UsuarioJaCadastrado extends BasePage {
     Faker faker = new Faker();
     BasePage basePage;
     WebDriver driver;
@@ -19,8 +19,9 @@ public class UsuarioJaCadastrado {
     }
     @Entao("aparece mensagem Usuario ja Cadastrado")
     public void aparece_mensagem_usuario_ja_cadastrado() {
-        basePage.UsuarioJaCadastrado();
-        AppDriver.killDriver();
+        basePage.mensagemErroLogar();
+        driver.close();
+        tirarFoto(driver, "ja cadastrado.jpg");
     }
 
 }

@@ -1,10 +1,22 @@
 package Main;
 
+import lombok.Data;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@Data
 public class Usuario {
+
+    private  int id;
+    private  String nome;
+    private  String senha;
+
+
+    public  int getid(){
+        return id;
+    }
     private static Connection conexao;
 
     public static void conectar()throws SQLException{

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         dryRun = false,
         features = "src/main/Features/",
         glue = {"Stepes","Driver.AppDriver"},
-        tags = "@CadastraUsuario",
+        tags = "@TesteLogin",
         monochrome = true,
         publish = true,
         plugin = {"pretty", "json:target/report.json", "junit:target/report.xml", "html:target/cucumber-reports.html" },
