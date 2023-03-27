@@ -1,32 +1,26 @@
 package Main;
 
-class Usuario {
-    private String nome;
-    private String senha;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-    public Usuario(String nome, String senha) {
-        this.nome = nome;
-        this.senha = senha;
+public class Usuario {
+    private static Connection conexao;
+
+    public static void conectar()throws SQLException{
+        conexao = Conn.conectar();
     }
 
-    public String getNome() {
-        return nome;
+    public static void  salvar(String nome, String senha) throws SQLException{
+
+        String sql = "INSERT INTO usuario(nome, senha) values (?, ?)";
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        ps.setString(1,nome);
+        ps.setString(2,senha);
+        ps.executeUpdate();
+        Conn.desconectar();
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
-    public String getSenha() {
-        return senha;
-    }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuário [nome=" + nome  + ", senha=" + senha + "]";
-    }
 }

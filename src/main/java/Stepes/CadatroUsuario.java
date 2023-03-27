@@ -2,12 +2,14 @@ package Stepes;
 
 import Main.AppDriver;
 import Main.BasePage;
+import Main.Usuario;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.WebDriver;
 import com.github.javafaker.Faker;
 
+import java.sql.SQLException;
 
 
 public class CadatroUsuario {
@@ -30,7 +32,9 @@ public class CadatroUsuario {
       basePage.CampoTelaLogarCadastroUsuario();
     }
     @E("preenchos os campos nome e senha e confirmo a senha")
-    public void preenchos_os_campos_nome_e_senha_e_confirmo_a_senha() {
+    public void preenchos_os_campos_nome_e_senha_e_confirmo_a_senha() throws SQLException {
+        Usuario.conectar();
+        Usuario.salvar(nome, senha);
         basePage.campoNomeCadastro(nome);
         basePage.campoSenhaCadastro(senha);
         basePage.campoConfirmarSenhaCadastro(senha);
