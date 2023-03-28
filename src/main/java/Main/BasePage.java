@@ -2,7 +2,7 @@ package Main;
 
 import static  Main.AppDriver.getDriver;
 
-import io.appium.java_client.android.AndroidDriver;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -10,13 +10,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class BasePage {
-    private AndroidDriver driver;
+
+    Faker faker = new Faker();
+
     public BasePage() {
         this.driver = getDriver();
     }
 
+    WebDriver driver;
 
     public void id_do_usuario(String name) {
         driver.findElement(By.id("br.com.alura.aluraesporte:id/input_usuario")).sendKeys(name);
@@ -74,15 +79,20 @@ public class BasePage {
     }
 
     public void CampoUsuario(){
-        driver.findElement(By.id("br.com.alura.aluraesporte:id/input_usuario")).sendKeys("Fabiano");
+        driver.findElement(By.id("br.com.alura.aluraesporte:id/input_usuario")).sendKeys("fabiano");
     }
-    public void CampoSenha(){
+    public  void CampoSenha(){
         driver.findElement(By.id("br.com.alura.aluraesporte:id/input_senha")).sendKeys("12345678");
     }
 
 
+    private static String getCurrentDate () {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        return dateFormat.format(Calendar.getInstance().getTime());
+    }
+
     public static void tirarFoto(WebDriver navegador, String passo) {
-        String arquivo = "target/out/Screenshots" + passo;
+        String arquivo = "target/out/Screenshots" + passo ;
         File screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         try {
             FileHandler.copy(screenshot, new File(arquivo));

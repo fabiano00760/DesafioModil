@@ -25,7 +25,7 @@ public class Usuario {
 
     public static void  salvar(String nome, String senha) throws SQLException{
 
-        String sql = "INSERT INTO usuario(nome, senha) values (?, ?)";
+        String sql = "INSERT INTO usuario (nome, senha) values (?, ?)";
         PreparedStatement ps = conexao.prepareStatement(sql);
         ps.setString(1,nome);
         ps.setString(2,senha);

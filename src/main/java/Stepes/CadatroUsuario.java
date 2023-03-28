@@ -12,7 +12,7 @@ import com.github.javafaker.Faker;
 import java.sql.SQLException;
 
 
-public class CadatroUsuario extends BasePage{
+public class CadatroUsuario extends BasePage {
     static Faker faker = new Faker();
     BasePage basePage;
     WebDriver driver;
@@ -36,8 +36,7 @@ public class CadatroUsuario extends BasePage{
 
     @E("preenchos os campos nome e senha e confirmo a senha")
     public void preenchos_os_campos_nome_e_senha_e_confirmo_a_senha() throws SQLException {
-        Usuario.conectar();
-        Usuario.salvar(nome, senha);
+
         basePage.campoNomeCadastro(nome);
         basePage.campoSenhaCadastro(senha);
         basePage.campoConfirmarSenhaCadastro(senha);

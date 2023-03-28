@@ -9,7 +9,7 @@ public class Teste {
             UsuarioDAO dao = new UsuarioDAO();
             List<Usuario> usuarios = dao.listar();
             for (Usuario usuario : usuarios) {
-                System.out.println("id " + usuario.getid()+ ":" + usuario.getNome() + ": " + usuario.getSenha() );
+                System.out.println("id : " + usuario.getid()+ ": nome " + usuario.getNome() + ": senha " + usuario.getSenha() );
             }
         } catch (SQLException e) {
             System.out.println("Erro ao listar usuários: " + e.getMessage());

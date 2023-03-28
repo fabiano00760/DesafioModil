@@ -15,7 +15,7 @@ public class Conn{
             if (conexao == null || conexao.isClosed()) {
                 Class.forName("org.postgresql.Driver");
                 conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-                System.out.println("Banco conectado!");
+             //   System.out.println("Banco conectado!");
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());

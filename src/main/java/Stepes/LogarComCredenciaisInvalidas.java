@@ -31,7 +31,7 @@ public class LogarComCredenciaisInvalidas extends BasePage {
     public void devo_ver_uma_mensagem_de_erro() {
         basePage.mensagemErroLogar();
         tirarFoto(driver, "messagem de erro.jpg ");
-
+       AppDriver.killDriver();
     }
 
 
