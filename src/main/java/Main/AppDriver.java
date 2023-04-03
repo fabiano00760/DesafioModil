@@ -39,10 +39,9 @@ public class AppDriver {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
     }
-
     public static void killDriver() {
         if(driver != null) {
             driver.quit();
