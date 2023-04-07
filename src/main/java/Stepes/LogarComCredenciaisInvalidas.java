@@ -2,6 +2,7 @@ package Stepes;
 
 import Main.AppDriver;
 import Main.BasePage;
+import Main.PrintScr;
 import com.itextpdf.text.DocumentException;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Então;
@@ -10,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import com.github.javafaker.Faker;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 
@@ -32,9 +34,10 @@ public class LogarComCredenciaisInvalidas extends BasePage {
     }
 
     @Então("devo ver uma mensagem de erro")
-    public void devo_ver_uma_mensagem_de_erro() throws DocumentException {
+    public void devo_ver_uma_mensagem_de_erro() throws DocumentException, FileNotFoundException {
         basePage.mensagemErroLogar();
         tirarFoto(driver, "messagem de erro.jpg ");
+        new PrintScr().salvarArquivosNoPdf("TST");
        AppDriver.killDriver();
     }
 

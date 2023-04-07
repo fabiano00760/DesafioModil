@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="36.742" tests="4" skipped="0" failures="0" errors="0">
+<testcase classname="Login" name="Cadastro de usuario" time="9.849">
+<system-out><![CDATA[
+Dado que estou na página de login...........................................passed
+Quando clico em no campo cadastra usuario...................................passed
+E preenchos os campos nome e senha e confirmo a senha.......................passed
+E clico no campo cadastra...................................................passed
+Entao usuario cadastrado com sucesso........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login" name="Login bem-sucedido" time="11.44">
+<system-out><![CDATA[
+Quando clico em no campo cadastra usuario...................................passed
+E preenchos os campos nome e senha e confirmo a senha.......................passed
+E clico no campo cadastra...................................................passed
+Dado que estou na página de login...........................................passed
+Quando inserir credenciais validas E tocar no botao de login................passed
+Então devo estar na pagina inicial..........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login" name="Usuario ja Cadastrado" time="8.556">
+<system-out><![CDATA[
+Dado que estou na página de login...........................................passed
+Quando clico em no campo cadastra usuario...................................passed
+E preenchos os campos nome e senha e confirmo a senha.......................passed
+E clico no campo cadastra...................................................passed
+Entao aparece mensagem Usuario ja Cadastrado................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login" name="Credenciais inválidas" time="6.779">
+<system-out><![CDATA[
+Dado que estou na página de login...........................................passed
+Quando inserir credenciais invalidas E tocar no botao de login..............passed
+Então devo ver uma mensagem de erro.........................................passed
+]]></system-out>
+</testcase>
+</testsuite>

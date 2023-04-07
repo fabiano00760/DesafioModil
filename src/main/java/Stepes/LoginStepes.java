@@ -2,6 +2,7 @@ package Stepes;
 
 import Main.AppDriver;
 import Main.BasePage;
+import Main.PrintScr;
 import Main.Usuario;
 import com.github.javafaker.Name;
 import com.itextpdf.text.DocumentException;
@@ -14,6 +15,7 @@ import com.github.javafaker.Faker;
 
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Driver;
 import java.sql.SQLException;
 import java.util.List;
@@ -22,7 +24,6 @@ import static Stepes.CadatroUsuario.nome;
 import static Stepes.CadatroUsuario.senha;
 
 public class LoginStepes extends BasePage {
-    Faker faker = new Faker();
     BasePage basePage;
     WebDriver driver;
 
@@ -36,13 +37,12 @@ public class LoginStepes extends BasePage {
         AppDriver.getDriver();
         tirarFoto(driver, "telaLogin.jpg");
 
-
     }
 
     @Quando("inserir credenciais validas E tocar no botao de login")
     public void inserir_credenciais_validas_e_tocar_no_botao_de_login() throws SQLException, DocumentException {
-        Usuario.conectar();
-        Usuario.salvar(nome, senha);
+        //Usuario.conectar();
+        //Usuario.salvar(nome, senha);
         basePage.id_do_usuario(nome);
         basePage.senha(senha);
         basePage.logar();
@@ -50,11 +50,11 @@ public class LoginStepes extends BasePage {
     }
 
     @Entao("devo estar na pagina inicial")
-    public void devo_estar_na_pagina_inicial() throws DocumentException {
+    public void devo_estar_na_pagina_inicial() throws DocumentException, FileNotFoundException {
         basePage.TextListaDeProdutos();
         tirarFoto(driver, "pagina inicial.jpg");
+        new PrintScr().salvarArquivosNoPdf("TST");
      AppDriver.killDriver();
     }
-
 
 }

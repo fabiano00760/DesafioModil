@@ -2,17 +2,16 @@ package Stepes;
 
 import Main.AppDriver;
 import Main.BasePage;
-import Main.Usuario;
+import Main.PrintScr;
+import com.github.javafaker.Faker;
 import com.itextpdf.text.DocumentException;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.WebDriver;
-import com.github.javafaker.Faker;
 
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
-import java.util.List;
 
 
 public class CadatroUsuario extends BasePage {
@@ -44,8 +43,6 @@ public class CadatroUsuario extends BasePage {
         basePage.campoSenhaCadastro(senha);
         basePage.campoConfirmarSenhaCadastro(senha);
         tirarFoto(driver, "campo nome e senha.jpg ");
-
-
     }
 
     @E("clico no campo cadastra")
@@ -54,9 +51,10 @@ public class CadatroUsuario extends BasePage {
     }
 
     @Entao("usuario cadastrado com sucesso")
-    public void usuario_cadastrado_com_sucesso() throws DocumentException {
+    public void usuario_cadastrado_com_sucesso() throws DocumentException, FileNotFoundException {
         basePage.cadastroComSucesso();
         tirarFoto(driver, "telaLogin.jpg");
+        new PrintScr().salvarArquivosNoPdf("TST");
         AppDriver.killDriver();
     }
 }
