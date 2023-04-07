@@ -4,6 +4,7 @@ import Main.AppDriver;
 import Main.BasePage;
 import Main.Usuario;
 import com.github.javafaker.Name;
+import com.itextpdf.text.DocumentException;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
@@ -12,8 +13,10 @@ import org.openqa.selenium.WebDriver;
 import com.github.javafaker.Faker;
 
 import javax.imageio.ImageIO;
+import java.io.File;
 import java.sql.Driver;
 import java.sql.SQLException;
+import java.util.List;
 
 import static Stepes.CadatroUsuario.nome;
 import static Stepes.CadatroUsuario.senha;
@@ -29,7 +32,7 @@ public class LoginStepes extends BasePage {
     }
 
     @Dado("que estou na página de login")
-    public void que_estou_na_pagina_de_login() {
+    public void que_estou_na_pagina_de_login() throws DocumentException {
         AppDriver.getDriver();
         tirarFoto(driver, "telaLogin.jpg");
 
@@ -37,7 +40,7 @@ public class LoginStepes extends BasePage {
     }
 
     @Quando("inserir credenciais validas E tocar no botao de login")
-    public void inserir_credenciais_validas_e_tocar_no_botao_de_login() throws SQLException {
+    public void inserir_credenciais_validas_e_tocar_no_botao_de_login() throws SQLException, DocumentException {
         Usuario.conectar();
         Usuario.salvar(nome, senha);
         basePage.id_do_usuario(nome);
@@ -47,7 +50,7 @@ public class LoginStepes extends BasePage {
     }
 
     @Entao("devo estar na pagina inicial")
-    public void devo_estar_na_pagina_inicial() {
+    public void devo_estar_na_pagina_inicial() throws DocumentException {
         basePage.TextListaDeProdutos();
         tirarFoto(driver, "pagina inicial.jpg");
      AppDriver.killDriver();

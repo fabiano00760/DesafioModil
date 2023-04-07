@@ -3,13 +3,16 @@ package Stepes;
 import Main.AppDriver;
 import Main.BasePage;
 import Main.Usuario;
+import com.itextpdf.text.DocumentException;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.WebDriver;
 import com.github.javafaker.Faker;
 
+import java.io.File;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class CadatroUsuario extends BasePage {
@@ -22,20 +25,20 @@ public class CadatroUsuario extends BasePage {
     static String nome = faker.name().firstName();
 
 
-    public CadatroUsuario() {
+    public CadatroUsuario() throws DocumentException {
         basePage = new BasePage();
         driver = AppDriver.getDriver();
         tirarFoto(driver, "tela inicial.jpg");
     }
 
     @Quando("clico em no campo cadastra usuario")
-    public void cloco_em_no_campo_cadastra_usuario() {
+    public void cloco_em_no_campo_cadastra_usuario() throws DocumentException {
         basePage.CampoTelaLogarCadastroUsuario();
         tirarFoto(driver, "cadastra usuario.jpg");
     }
 
     @E("preenchos os campos nome e senha e confirmo a senha")
-    public void preenchos_os_campos_nome_e_senha_e_confirmo_a_senha() throws SQLException {
+    public void preenchos_os_campos_nome_e_senha_e_confirmo_a_senha() throws SQLException, DocumentException {
 
         basePage.campoNomeCadastro(nome);
         basePage.campoSenhaCadastro(senha);
@@ -51,7 +54,7 @@ public class CadatroUsuario extends BasePage {
     }
 
     @Entao("usuario cadastrado com sucesso")
-    public void usuario_cadastrado_com_sucesso() {
+    public void usuario_cadastrado_com_sucesso() throws DocumentException {
         basePage.cadastroComSucesso();
         tirarFoto(driver, "telaLogin.jpg");
         AppDriver.killDriver();
