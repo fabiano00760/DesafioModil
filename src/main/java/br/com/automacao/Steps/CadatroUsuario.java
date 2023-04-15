@@ -1,17 +1,12 @@
-package Stepes;
+package br.com.automacao.Steps;
 
-import Main.AppDriver;
-import Main.BasePage;
-import Main.PrintScr;
+import br.com.automacao.Configuration.AppDriver;
+import br.com.automacao.Utils.BasePage;
 import com.github.javafaker.Faker;
-import com.itextpdf.text.DocumentException;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.WebDriver;
-
-import java.io.FileNotFoundException;
-import java.sql.SQLException;
 
 
 public class CadatroUsuario extends BasePage {
@@ -19,30 +14,26 @@ public class CadatroUsuario extends BasePage {
     BasePage basePage;
     WebDriver driver;
 
-
     static String senha = faker.internet().password(1, 20, true);
     static String nome = faker.name().firstName();
 
 
-    public CadatroUsuario() throws DocumentException {
+    public CadatroUsuario() {
         basePage = new BasePage();
         driver = AppDriver.getDriver();
-        tirarFoto(driver, "tela inicial.jpg");
     }
 
     @Quando("clico em no campo cadastra usuario")
-    public void cloco_em_no_campo_cadastra_usuario() throws DocumentException {
+    public void cloco_em_no_campo_cadastra_usuario() {
         basePage.CampoTelaLogarCadastroUsuario();
-        tirarFoto(driver, "cadastra usuario.jpg");
     }
 
     @E("preenchos os campos nome e senha e confirmo a senha")
-    public void preenchos_os_campos_nome_e_senha_e_confirmo_a_senha() throws SQLException, DocumentException {
+    public void preenchos_os_campos_nome_e_senha_e_confirmo_a_senha() {
 
         basePage.campoNomeCadastro(nome);
         basePage.campoSenhaCadastro(senha);
         basePage.campoConfirmarSenhaCadastro(senha);
-        tirarFoto(driver, "campo nome e senha.jpg ");
     }
 
     @E("clico no campo cadastra")
@@ -51,10 +42,7 @@ public class CadatroUsuario extends BasePage {
     }
 
     @Entao("usuario cadastrado com sucesso")
-    public void usuario_cadastrado_com_sucesso() throws DocumentException, FileNotFoundException {
+    public void usuario_cadastrado_com_sucesso() {
         basePage.cadastroComSucesso();
-        tirarFoto(driver, "telaLogin.jpg");
-        new PrintScr().salvarArquivosNoPdf("TST");
-        AppDriver.killDriver();
     }
 }

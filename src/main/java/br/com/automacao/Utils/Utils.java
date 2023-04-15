@@ -1,4 +1,4 @@
-package Main;
+package br.com.automacao.Utils;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -18,13 +18,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Main.AppDriver.getDriver;
+import static br.com.automacao.Configuration.AppDriver.getDriver;
 
-public class PrintScr {
+public class Utils {
 
   static WebDriver driver;
   public static List<Image> screenshots = new ArrayList<>();
-  String folderPath = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+  String folderPath = "Reports/PDFs";
   LocalDate now = LocalDate.now();
   String folderName = now.format(DateTimeFormatter.ISO_LOCAL_DATE);
   String folderPathWithDate = folderPath + File.separator + folderName;
@@ -32,11 +32,11 @@ public class PrintScr {
   String filePath = folderPathWithDate + File.separator + fileName;
 
 
-  public PrintScr() {
-    this.driver = getDriver();
+  public Utils() {
+    driver = getDriver();
   }
 
-  public void tirarFoto(WebDriver navegador, String passo) {
+  public void tirarFoto() {
 
 
     File folder = new File(folderPathWithDate);
@@ -54,23 +54,38 @@ public class PrintScr {
         screenshots.add(screenshot);
       }
 
-    } catch (IOException | DocumentException e) {
+    } catch (IOException | DocumentException ignored) {
 
     }
 
   }
 
-  public void salvarArquivosNoPdf(String passo) throws FileNotFoundException, DocumentException {
+  public void salvarArquivosNoPdf(String passo) {
 
     Document document = new Document();
-    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
+    PdfWriter writer = null;
+
+    try {
+      writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
+    } catch (DocumentException | FileNotFoundException e) {
+      throw new RuntimeException(e);
+    }
 
     document.open();
     document.newPage();
-    document.add(new com.itextpdf.text.Paragraph(passo));
+
+    try {
+      document.add(new com.itextpdf.text.Paragraph(passo));
+    } catch (DocumentException e) {
+      throw new RuntimeException(e);
+    }
 
     for (Image screenshot : screenshots) {
-      document.add(screenshot);
+      try {
+        document.add(screenshot);
+      } catch (DocumentException e) {
+        throw new RuntimeException(e);
+      }
     }
 
     screenshots.clear();

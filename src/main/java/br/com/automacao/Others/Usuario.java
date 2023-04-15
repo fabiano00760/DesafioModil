@@ -1,5 +1,6 @@
-package Main;
+package br.com.automacao.Others;
 
+import br.com.automacao.Configuration.Conn;
 import lombok.Data;
 
 import java.sql.Connection;

@@ -1,18 +1,14 @@
-package Stepes;
+package br.com.automacao.Steps;
 
-import Main.AppDriver;
-import Main.BasePage;
-import Main.PrintScr;
+import br.com.automacao.Configuration.AppDriver;
+import br.com.automacao.Utils.BasePage;
 import com.itextpdf.text.DocumentException;
-import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.WebDriver;
 import com.github.javafaker.Faker;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
 
 
 public class LogarComCredenciaisInvalidas extends BasePage {
@@ -30,15 +26,11 @@ public class LogarComCredenciaisInvalidas extends BasePage {
         basePage.CampoUsuario();
         basePage.CampoSenha();
         basePage.BtnLogar();
-        tirarFoto(driver, " credenciais invalidas.jpg");
     }
 
     @Então("devo ver uma mensagem de erro")
     public void devo_ver_uma_mensagem_de_erro() throws DocumentException, FileNotFoundException {
         basePage.mensagemErroLogar();
-        tirarFoto(driver, "messagem de erro.jpg ");
-        new PrintScr().salvarArquivosNoPdf("TST");
-       AppDriver.killDriver();
     }
 
 

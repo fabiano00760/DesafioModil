@@ -1,4 +1,6 @@
-package Main;
+package br.com.automacao.Others;
+
+import br.com.automacao.Configuration.Conn;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

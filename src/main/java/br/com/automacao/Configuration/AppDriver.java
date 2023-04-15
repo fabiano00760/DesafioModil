@@ -1,4 +1,4 @@
-package Main;
+package br.com.automacao.Configuration;
 
 
 import java.io.File;

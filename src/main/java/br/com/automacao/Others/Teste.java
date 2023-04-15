@@ -1,4 +1,4 @@
-package Main;
+package br.com.automacao.Others;
 
 import java.sql.SQLException;
 import java.util.List;
