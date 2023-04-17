@@ -1,14 +1,8 @@
 package Runner;
 
-import Main.PrintScr;
-import com.itextpdf.text.DocumentException;
-import io.cucumber.java.Scenario;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
-import org.junit.AfterClass;
 import org.junit.runner.RunWith;
-
-import java.io.FileNotFoundException;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(

@@ -7,7 +7,7 @@ Funcionalidade: Login
 
   @CadastraUsuario
 
-  Cenario: Cadastro de usuario
+  Cenario: Cadastro de usuariod
 
     Dado  que estou na página de login
     Quando clico em no campo cadastra usuario

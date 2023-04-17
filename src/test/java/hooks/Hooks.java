@@ -1,42 +1,28 @@
 package hooks;
 
-import Main.AppDriver;
-import Main.BasePage;
-import Main.PrintScr;
+import Configuration.AppDriver;
+import Utils.BasePage;
+import Utils.PrintScr;
 import com.itextpdf.text.DocumentException;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
-import io.cucumber.java.BeforeStep;
 import io.cucumber.java.Scenario;
-import org.openqa.selenium.WebDriver;
-
 
 import java.io.FileNotFoundException;
-import java.sql.Driver;
-/*
+import java.io.IOException;
+
 public class Hooks extends BasePage {
 
-  WebDriver driver;
 
-  public Hooks() {
-    this.driver = AppDriver.getDriver();
-  }
+    @AfterStep
+    public void afterStepExecution(){
+        tirarFoto();
+    }
 
-  @After
-  public void afterScenarioExecution(Scenario scenario) throws DocumentException, FileNotFoundException {
-
-    new PrintScr().salvarArquivosNoPdf(String.valueOf(scenario));
-
-  }
-
-  @AfterStep
-  public void afterStepExecution() {
-
-    tirarFoto(driver,"STEP NAME");
-
-  }
-
-
+    @After
+    public void afterScenariosExecution(Scenario scenario) throws DocumentException, FileNotFoundException {
+        new PrintScr().salvarArquivosNoPdf(String.valueOf(scenario.getName()));
+        AppDriver.killDriver();
+    }
 
 }
- */
