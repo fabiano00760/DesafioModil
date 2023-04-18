@@ -27,7 +27,6 @@ public class LoginOK extends BasePage {
     @Dado("que estou na página de login")
     public void que_estou_na_pagina_de_login() throws DocumentException {
         AppDriver.getDriver();
-        //tirarFoto(driver, "telaLogin.jpg");
         tirarFoto();
 
     }
@@ -44,7 +43,6 @@ public class LoginOK extends BasePage {
             basePage.senha(senha);
             basePage.logar();
             tirarFoto();
-            //tirarFoto(driver, "Inserir credenciais validas.jpg");
             Usuario.salvar(nome, senha,status,nomeTeste);
         }catch (Exception e){
             Usuario.conectar();
@@ -59,7 +57,6 @@ public class LoginOK extends BasePage {
     public void devo_estar_na_pagina_inicial() throws DocumentException, IOException {
         basePage.TextListaDeProdutos();
         tirarFoto();
-        //tirarFoto(driver, "pagina inicial.jpg");
         new PrintScr().salvarArquivosNoPdf("Teste.APK");
         AppDriver.killDriver();
 

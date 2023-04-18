@@ -10,7 +10,7 @@ Funcionalidade: Login
   Cenario: Cadastro de usuariod
 
     Dado  que estou na página de login
-    Quando clico em no campo cadastra usuario
+    Quando clico no campo cadastra usuario
     E  preenchos os campos nome e senha e confirmo a senha
     E clico no campo cadastra
     Entao usuario cadastrado com sucesso
@@ -18,7 +18,7 @@ Funcionalidade: Login
   @Login
   Cenário: Login bem-sucedido
 
-    Quando clico em no campo cadastra usuario
+    Quando clico no campo cadastra usuario
     E  preenchos os campos nome e senha e confirmo a senha
     E clico no campo cadastra
     Dado  que estou na página de login
@@ -30,7 +30,7 @@ Funcionalidade: Login
   Cenario: Usuario ja Cadastrado
 
     Dado que estou na página de login
-    Quando clico em no campo cadastra usuario
+    Quando clico no campo cadastra usuario
     E  preenchos os campos nome e senha e confirmo a senha
     E clico no campo cadastra
     Entao aparece mensagem Usuario ja Cadastrado

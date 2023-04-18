@@ -28,14 +28,12 @@ public class CadatroUsuario extends BasePage {
         basePage = new BasePage();
         driver = AppDriver.getDriver();
         tirarFoto();
-        //tirarFoto(driver, "tela inicial.jpg");
     }
 
-    @Quando("clico em no campo cadastra usuario")
-    public void cloco_em_no_campo_cadastra_usuario() throws DocumentException {
+    @Quando("clico no campo cadastra usuario")
+    public void cloco_no_campo_cadastra_usuario() throws DocumentException {
         basePage.CampoTelaLogarCadastroUsuario();
         tirarFoto();
-        // tirarFoto(driver, "cadastra usuario.jpg");
     }
 
     @E("preenchos os campos nome e senha e confirmo a senha")
@@ -44,7 +42,6 @@ public class CadatroUsuario extends BasePage {
         basePage.campoNomeCadastro(nome);
         basePage.campoSenhaCadastro(senha);
         basePage.campoConfirmarSenhaCadastro(senha);
-        //tirarFoto(driver, "campo nome e senha.jpg ");
         tirarFoto();
     }
 
@@ -57,7 +54,6 @@ public class CadatroUsuario extends BasePage {
     public void usuario_cadastrado_com_sucesso() throws DocumentException, IOException {
         basePage.cadastroComSucesso();
         tirarFoto();
-        // tirarFoto(driver, "telaLogin.jpg");
         new PrintScr().salvarArquivosNoPdf("Teste.APK");
         AppDriver.killDriver();
     }

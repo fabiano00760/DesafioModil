@@ -28,14 +28,12 @@ public class LogarComCredenciaisInvalidas extends BasePage {
         basePage.CampoSenha();
         basePage.BtnLogar();
         tirarFoto();
-        //tirarFoto(driver, " credenciais invalidas.jpg");
     }
 
     @Então("devo ver uma mensagem de erro")
     public void devo_ver_uma_mensagem_de_erro() throws DocumentException, FileNotFoundException {
         basePage.mensagemErroLogar();
        tirarFoto();
-       // tirarFoto(driver, "messagem de erro.jpg ");
         new PrintScr().salvarArquivosNoPdf("Teste.APK");
        AppDriver.killDriver();
     }
